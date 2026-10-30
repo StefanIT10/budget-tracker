@@ -35,14 +35,19 @@ Make sure you have Node.js and npm installed.
 
 ### Installation
 
+1. Clone the repository:
 
-1. Navigate to the project directory:
+   ```bash
+   git clone https://github.com/StefanIT10/budget-tracker.git
+   ```
+
+2. Navigate to the project directory:
 
    ```bash
    cd budget-tracker
    ```
 
-2. Install dependencies:
+3. Install dependencies:
 
    ```bash
    npm install
