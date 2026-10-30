@@ -1,0 +1,58 @@
+
+{
+  "categories": [
+    {
+      "id": 1,
+      "name": "Groceries",
+      "color": "#2E7D32"
+    },
+    {
+      "id": 2,
+      "name": "Transport",
+      "color": "#1565C0"
+    },
+    {
+      "id": 3,
+      "name": "Salary",
+      "color": "#6A1B9A"
+    }
+  ],
+  "transactions": [
+    {
+      "id": 12,
+      "type": "expense",
+      "amount": "45.10",
+      "date": "2026-10-03",
+      "description": "Weekly shopping",
+      "category_id": 1
+    },
+    {
+      "id": 13,
+      "type": "expense",
+      "amount": "25.00",
+      "date": "2026-10-05",
+      "description": "Bus ticket",
+      "category_id": 2
+    },
+    {
+      "id": 14,
+      "type": "income",
+      "amount": "1500.00",
+      "date": "2026-10-01",
+      "description": "Salary",
+      "category_id": 3
+    }
+  ],
+  "budgets": [
+    {
+      "month": "2026-10",
+      "category_id": 1,
+      "amount": "200.00"
+    },
+    {
+      "month": "2026-10",
+      "category_id": 2,
+      "amount": "80.00"
+    }
+  ]
+}
