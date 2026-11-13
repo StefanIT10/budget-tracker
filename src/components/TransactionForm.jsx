@@ -49,9 +49,10 @@ function TransactionForm({
           type="text"
           value={transactionAmount}
           onChange={(event) => setTransactionAmount(event.target.value)}
-          placeholder="e.g. 1500.00"
+          placeholder="e.g. 150.00"
         />
       </label>
+
       {fieldErrors.amount && (
         <p role="alert" className="field-error">
           {fieldErrors.amount}
@@ -66,6 +67,7 @@ function TransactionForm({
           onChange={(event) => setTransactionDate(event.target.value)}
         />
       </label>
+
       {fieldErrors.date && (
         <p role="alert" className="field-error">
           {fieldErrors.date}
@@ -81,6 +83,7 @@ function TransactionForm({
           placeholder="e.g. Grocery shopping"
         />
       </label>
+
       {fieldErrors.description && (
         <p role="alert" className="field-error">
           {fieldErrors.description}
@@ -101,11 +104,13 @@ function TransactionForm({
           ))}
         </select>
       </label>
+
       {fieldErrors.category && (
         <p role="alert" className="field-error">
           {fieldErrors.category}
         </p>
       )}
+
       {formError && <p role="alert">{formError}</p>}
 
       <button type="submit" disabled={saving}>

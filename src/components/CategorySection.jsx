@@ -44,11 +44,13 @@ function CategorySection({
               onChange={(event) => setCategoryColor(event.target.value)}
             />
           </label>
+
           {categoryError && (
             <p role="alert" className="category-error">
               {categoryError}
             </p>
           )}
+
           <button type="submit" disabled={savingCategory}>
             {savingCategory
               ? "Saving..."
@@ -79,6 +81,7 @@ function CategorySection({
           </article>
         ))}
       </div>
+
       {categoryError && !showCategoryForm && (
         <p role="alert" className="category-error">
           {categoryError}

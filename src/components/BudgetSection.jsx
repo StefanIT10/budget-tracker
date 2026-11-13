@@ -14,6 +14,7 @@ function BudgetSection({
   budgetSummaries,
   formatCents,
   onDeleteBudget,
+  onCancel,
 }) {
   return (
     <section className="budgets">
@@ -21,7 +22,7 @@ function BudgetSection({
       <button
         type="button"
         onClick={() => {
-          setShowBudgetForm(!showBudgetForm);
+          setShowBudgetForm(true);
         }}
       >
         Set budget
@@ -54,14 +55,16 @@ function BudgetSection({
               step="0.01"
               value={budgetAmount}
               onChange={(event) => setBudgetAmount(event.target.value)}
-              placeholder="e.g. 15000"
+              placeholder="e.g. 150.00"
             />
           </label>
+
           {budgetError && <p role="alert">{budgetError}</p>}
+
           <button type="submit" disabled={savingBudget}>
             {savingBudget ? "Saving..." : "Save budget"}
           </button>
-          <button type="button" onClick={() => setShowBudgetForm(false)}>
+          <button type="button" onClick={onCancel}>
             Cancel
           </button>
         </form>

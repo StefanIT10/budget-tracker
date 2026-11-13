@@ -3,6 +3,11 @@
   box-sizing: border-box;
 }
 
+input::placeholder,
+textarea::placeholder {
+  font-style: italic;
+}
+
 body {
   margin: 0;
   font-family: Arial, sans-serif;
@@ -436,9 +441,15 @@ button:focus-visible {
 }
 
 /* Errors */
-.field-error,
+.field-error {
+  margin-top: 1px;
+  margin-bottom: 1px;
+  color: #dc2626;
+  font-size: 14px;
+}
+
 .category-error {
-  margin: 0;
+  margin-bottom: 1px;
   color: #dc2626;
   font-size: 14px;
 }

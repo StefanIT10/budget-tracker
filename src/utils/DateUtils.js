@@ -5,7 +5,6 @@ export function getMonthFromDate(date) {
 export function getLatestMonth(transactions) {
   if (transactions.length === 0) {
     const today = new Date();
-
     const year = today.getFullYear();
     const month = String(today.getMonth() + 1).padStart(2, "0");
 

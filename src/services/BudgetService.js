@@ -83,6 +83,8 @@ export async function addTransaction(transaction) {
 
   data.transactions.push(newTransaction);
 
+  console.log(newTransaction);
+
   saveData(data);
 
   return newTransaction;

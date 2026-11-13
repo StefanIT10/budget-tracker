@@ -79,8 +79,10 @@ function App() {
         ) {
           setSortOrder(sortFromUrl);
         }
+
         if (typeFromUrl === "income" || typeFromUrl === "expense")
           setSelectedType(typeFromUrl);
+
         const categoryExists = result.categories.some(
           (category) => Number(category.id) === Number(categoryFromUrl),
         );
@@ -88,6 +90,7 @@ function App() {
         if (categoryFromUrl && categoryExists) {
           setSelectedCategory(categoryFromUrl);
         }
+
         if (searchFromUrl) setSearchText(searchFromUrl);
 
         if (monthFromUrl && /^\d{4}-(0[1-9]|1[0-2])$/.test(monthFromUrl)) {
@@ -181,6 +184,7 @@ function App() {
     }
 
     setSaving(true);
+
     try {
       const transactionData = {
         type: transactionType,
@@ -279,8 +283,10 @@ function App() {
       return;
     }
     setSavingBudget(true);
+
     try {
       await saveBudget(selectedMonth, budgetCategory, amount);
+
       setData((previousData) => {
         const updatedBudgets = previousData.budgets.filter(
           (budget) =>
@@ -296,6 +302,7 @@ function App() {
         });
         return { ...previousData, budgets: updatedBudgets };
       });
+
       setBudgetCategory("");
       setBudgetAmount("");
       setBudgetError("");
@@ -332,32 +339,41 @@ function App() {
   async function handleAddCategory(event) {
     event.preventDefault();
     setCategoryError("");
+
     const name = categoryName.trim();
+
     if (name === "") {
       setCategoryError("Please enter a category name.");
       return;
     }
+
     if (name.length > 30) {
       setCategoryError("Category name can contain up to 30 characters.");
       return;
     }
+
     const alreadyExists = data.categories.some(
       (category) => category.name.toLowerCase() === name.toLowerCase(),
     );
+
     if (alreadyExists) {
       setCategoryError("A category with this name already exists.");
       return;
     }
+
     setSavingCategory(true);
+
     try {
       const newCategory = await addCategory({
         name: name,
         color: categoryColor,
       });
+
       setData((previousData) => ({
         ...previousData,
         categories: [...previousData.categories, newCategory],
       }));
+
       setCategoryName("");
       setCategoryColor("#22c55e");
       setShowCategoryForm(false);
@@ -372,6 +388,7 @@ function App() {
     event.preventDefault();
     setCategoryError("");
     const name = categoryName.trim();
+
     if (name.length < 1 || name.length > 30) {
       setCategoryError("Name must contain between 1 and 30 characters.");
       return;
@@ -386,6 +403,7 @@ function App() {
       return;
     }
     setSavingCategory(true);
+
     try {
       const updatedCategory = await updateCategory(editingCategoryId, {
         name: name,
@@ -412,10 +430,13 @@ function App() {
     const confirmed = window.confirm(
       "Are you sure you want to delete this category and its budgets?",
     );
+
     if (!confirmed) return;
     setCategoryError("");
+
     try {
       await deleteCategory(categoryId);
+
       setData((previousData) => ({
         ...previousData,
         categories: previousData.categories.filter(
@@ -425,6 +446,7 @@ function App() {
           (budget) => budget.category_id !== categoryId,
         ),
       }));
+
       if (editingCategoryId === categoryId) {
         setEditingCategoryId(null);
         setCategoryName("");
@@ -568,6 +590,13 @@ function App() {
     setCategoryColor("#22c55e");
   }
 
+  function handleCancelBudget() {
+    setBudgetCategory("");
+    setBudgetAmount("");
+    setBudgetError("");
+    setShowBudgetForm(false);
+  }
+
   function handleClearFilters() {
     setSearchText("");
     setSelectedType("all");
@@ -666,6 +695,7 @@ function App() {
           budgetSummaries={budgetSummaries}
           formatCents={formatCents}
           onDeleteBudget={handleDeleteBudget}
+          onCancel={handleCancelBudget}
         />
 
         <TransactionSection
